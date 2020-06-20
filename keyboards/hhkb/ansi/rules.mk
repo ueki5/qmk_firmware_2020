@@ -22,7 +22,7 @@ COMMAND_ENABLE = yes   # Commands for debug and configuration
 CUSTOM_MATRIX = yes    # Custom matrix file for the HHKB
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 # SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
-# NKRO_ENABLE = yes 
+# Enable N-key roll over (NKRO_ENABLE = yes)
 # -> dfu abnormal end
 # -> make -> Keyboard's switch Reset
 # -> Space + N or LShift + RShift + N
