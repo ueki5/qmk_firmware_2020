@@ -22,7 +22,12 @@ COMMAND_ENABLE = yes   # Commands for debug and configuration
 CUSTOM_MATRIX = yes    # Custom matrix file for the HHKB
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 # SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
-# NKRO_ENABLE = yes       # USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+# NKRO_ENABLE = yes 
+# -> dfu abnormal end
+# -> make -> Keyboard's switch Reset
+# -> Space + N or LShift + RShift + N
+# -> OK
+NKRO_ENABLE = yes       # USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 # BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality
 # MIDI_ENABLE = yes       # MIDI controls
 # UNICODE_ENABLE = yes    # Unicode
