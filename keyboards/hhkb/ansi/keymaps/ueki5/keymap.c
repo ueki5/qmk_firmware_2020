@@ -2,6 +2,7 @@
  * default HHKB Layout
  */
 #include QMK_KEYBOARD_H
+#include "keymap_jp.h"
 
 #define BASE  0
 #define HHKB1 1
@@ -40,17 +41,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSPC,
         KC_LCTL, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT,
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_RGUI,
-        KC_LALT, MO(HHKB1), /*        */ KC_SPC, MO(HHKB2), KC_RALT),
+        KC_LALT, LT(HHKB1, JP_MHEN), /*        */ KC_SPC, LT(HHKB2, JP_HENK), KC_RALT),
 
     /* Layer HHKB1: Left Fn
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      | F1  | F2  | F3  | F4 | F5 | F6 | F7 | F8  | F9  | F10 | F11 | F12   |       |     |
+      |      | F1  | F2  | F3  | F4 | F5 | F6 | F7 | F8  | F9  | F10 | F11 | F12   | Ins   |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      |     |     |     |    |    | Top| Hom| Up  | End | Btom|     | Ins   |       |
+      |      |     |     |     |    |    | Top| Hom| Up  | End | Btom|JPUNS|JPPIPE |       |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------|
-      |      |Ctl-A|Ctl-S|LCtrl|LShf|    | BS | Lef| Dow | Rig | Del | Esc |       |
+      |      |Ctl-A|Ctl-S|LCtrl|LShf|    | BS | Lef| Dow | Rig | Del |JPBSL|       |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------|
-      |      |Ctl-Z|Ctl-X|Ctl-C|CtlV|    |PgDn|PSCR| SCLK|     | PgU |     |       |
+      |      |Ctl-Z|Ctl-X|Ctl-C|CtlV|    |Esc |PgDn| PSCR| PgU |     |     |       |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------|
 
                  |------+------+----------------------+------+------+
@@ -60,10 +61,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     [HHKB1] = LAYOUT(
-        KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, U_TOP,   KC_HOME, KC_UP,   KC_END,  U_BTM,   KC_TRNS, KC_INS,  KC_TRNS,
-        KC_TRNS, LCTLA,   LCTLS,   KC_LCTL, KC_LSFT, KC_TRNS, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  KC_ESC,  KC_TRNS,
-        KC_TRNS, LCTLZ  , LCTLX,   LCTLC,   LCTLV,   KC_TRNS, KC_PGDN, KC_PSCR, KC_SLCK, KC_TRNS, KC_PGUP, KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_INS, KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, U_TOP,   KC_HOME, KC_UP,   KC_END,  U_BTM,   JP_UNDS, JP_PIPE,  KC_TRNS,
+        KC_TRNS, LCTLA,   LCTLS,   KC_LCTL, KC_LSFT, KC_TRNS, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  JP_BSLS, KC_TRNS,
+        KC_TRNS, LCTLZ  , LCTLX,   LCTLC,   LCTLV,   KC_TRNS, KC_ESC,  KC_PGDN, KC_PSCR, KC_PGUP, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_ENT , KC_TRNS, KC_TRNS),
 
     /* Layer HHKB2: Right Fn
