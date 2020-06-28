@@ -14,6 +14,8 @@
 #define LCTLV LCTL(KC_V)
 #define LCTLX LCTL(KC_X)
 #define LCTLZ LCTL(KC_Z)
+#define U_TOP LCTL(KC_HOME)
+#define U_BTM LCTL(KC_END)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -44,11 +46,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       |      | F1  | F2  | F3  | F4 | F5 | F6 | F7 | F8  | F9  | F10 | F11 | F12   |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      |     |     |     |    |    | Hom| Esc| Up  |     | PgU | Del | Ins   |       |
+      |      |     |     |     |    |    | Top| Hom| Up  | End | Btom|     | Ins   |       |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------|
-      |      |Ctl-A|Ctl-S|LCtrl|LShf|    | Lef| Dow| Up  | Rig | End | BS  |       |
+      |      |Ctl-A|Ctl-S|LCtrl|LShf|    | BS | Lef| Dow | Rig | Del | Esc |       |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------|
-      |      |Ctl-Z|Ctl-X|Ctl-C|CtlV|    |PgDn|PSCR| SCLK|     |     |     |       |
+      |      |Ctl-Z|Ctl-X|Ctl-C|CtlV|    |PgDn|PSCR| SCLK|     | PgU |     |       |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------|
 
                  |------+------+----------------------+------+------+
@@ -59,18 +61,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [HHKB1] = LAYOUT(
         KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_ESC,  KC_UP,   KC_TRNS, KC_PGUP, KC_DEL,  KC_INS,  KC_TRNS,
-        KC_TRNS, LCTLA,   LCTLS,   KC_LCTL, KC_LSFT, KC_TRNS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_END,  KC_BSPC, KC_TRNS,
-        KC_TRNS, LCTLZ  , LCTLX,   LCTLC,   LCTLV,   KC_TRNS, KC_PGDN, KC_PSCR, KC_SLCK, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, U_TOP,   KC_HOME, KC_UP,   KC_END,  U_BTM,   KC_TRNS, KC_INS,  KC_TRNS,
+        KC_TRNS, LCTLA,   LCTLS,   KC_LCTL, KC_LSFT, KC_TRNS, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  KC_ESC,  KC_TRNS,
+        KC_TRNS, LCTLZ  , LCTLX,   LCTLC,   LCTLV,   KC_TRNS, KC_PGDN, KC_PSCR, KC_SLCK, KC_TRNS, KC_PGUP, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_ENT , KC_TRNS, KC_TRNS),
 
     /* Layer HHKB2: Right Fn
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       |      | F1  | F2  | F3  | F4 | F5 | F6 | F7 | F8  | F9  | F10 | F11 | F12   |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      |WH_U |BTN1 |MS_U |BTN2| Esc|    |    |     |     |     | Del | Ins   |       |
+      |      |WH_U |BTN1 |MS_U |BTN2| Esc|    |    |     |     |     |     |       |       |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------|
-      |      |WH_L |MS_L |MS_D |MS_R|WH_R|BSLS|RShf|RCtrl|     |     | BS  |       |
+      |      |WH_L |MS_L |MS_D |MS_R|WH_R|BSLS|RShf|RCtrl|     |     |     |       |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------|
       |      | BSLS| EQL |MINS |PPLS|WH_D|PPLS|MINS|EQL  |     |     |     |       |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------|
@@ -83,8 +85,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [HHKB2] = LAYOUT(
         KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_WH_U, KC_BTN1, KC_MS_U, KC_BTN2, KC_ESC,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL,  KC_INS,  KC_TRNS,
-        KC_TRNS, KC_WH_L, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R, KC_BSLS, KC_RSFT, KC_RCTL, KC_TRNS, KC_TRNS, KC_BSPC, KC_TRNS,
+        KC_TRNS, KC_WH_U, KC_BTN1, KC_MS_U, KC_BTN2, KC_ESC,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_WH_L, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R, KC_BSLS, KC_RSFT, KC_RCTL, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_BSLS, KC_EQL,  KC_MINS, KC_PPLS, KC_WH_D, KC_PPLS, KC_MINS, KC_EQL,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_ENT , KC_TRNS, KC_TRNS)};
 
