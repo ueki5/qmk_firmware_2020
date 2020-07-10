@@ -74,3 +74,4 @@ __pycache__
 # prerequisites for updating ChibiOS
 /util/fmpp*
 mdloader.exe
+mdloader_windows.exe
