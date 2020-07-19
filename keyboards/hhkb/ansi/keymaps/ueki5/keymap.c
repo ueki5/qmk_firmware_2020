@@ -3,6 +3,7 @@
  */
 #include QMK_KEYBOARD_H
 #include "keymap_jp.h"
+#include <quantum.h>
 
 #define BASE  0
 #define HHKB1 1
@@ -17,6 +18,35 @@
 #define LCTLZ LCTL(KC_Z)
 #define U_TOP LCTL(KC_HOME)
 #define U_BTM LCTL(KC_END)
+
+// key Combo definition
+enum combos {
+  COMBO_01,
+  COMBO_02,
+  COMBO_03
+};
+const uint16_t PROGMEM combo_01[] = {KC_TAB,  KC_ESC, COMBO_END};
+const uint16_t PROGMEM combo_02[] = {KC_LCTL, KC_ESC, COMBO_END};
+const uint16_t PROGMEM combo_03[] = {KC_LSFT, KC_ESC, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+  [COMBO_01] = COMBO(combo_01, LSFT(KC_C)),
+  [COMBO_02] = COMBO_ACTION(combo_02),
+  [COMBO_03] = COMBO_ACTION(combo_03)
+};
+void process_combo_event(uint8_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case COMBO_02:
+      if (pressed) {
+        tap_code16(LSFT(KC_D));
+      }
+      break;
+    case COMBO_03:
+      if (pressed) {
+        tap_code16(LSFT(KC_E));
+      }
+      break;
+  }
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 

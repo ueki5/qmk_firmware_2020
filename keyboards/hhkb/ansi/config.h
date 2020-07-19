@@ -31,9 +31,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 8
 
+// tap and hold
 #define TAPPING_TERM    200
 #define PERMISSIVE_HOLD
 #define RETRO_TAPPING
+
+// key combo
+#define COMBO_COUNT 3
+#define COMBO_TERM  200
 
 /* number of backlight levels */
 #define BACKLIGHT_LEVELS 3
