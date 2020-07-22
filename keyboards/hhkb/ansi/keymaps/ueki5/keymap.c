@@ -4,6 +4,7 @@
 #include QMK_KEYBOARD_H
 #include "keymap_jp.h"
 #include <quantum.h>
+#include <print.h>
 
 #define BASE  0
 #define HHKB1 1
@@ -37,15 +38,24 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
   switch(combo_index) {
     case COMBO_02:
       if (pressed) {
+        print("LCtl+ESC\n");
         tap_code16(LSFT(KC_D));
       }
       break;
     case COMBO_03:
       if (pressed) {
+        print("LSft+ESC\n");
         tap_code16(LSFT(KC_E));
       }
       break;
   }
+}
+void keyboard_post_init_user(void) {
+  // Customise these values to desired behaviour
+  debug_enable=true;
+  //debug_matrix=true;
+  //debug_keyboard=true;
+  //debug_mouse=true;
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
