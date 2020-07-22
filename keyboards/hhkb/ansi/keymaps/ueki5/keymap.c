@@ -32,19 +32,18 @@ const uint16_t PROGMEM combo_03[] = {KC_LSFT, KC_ESC, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
   [COMBO_01] = COMBO(combo_01, LSFT(KC_C)),
   [COMBO_02] = COMBO_ACTION(combo_02),
-  [COMBO_03] = COMBO_ACTION(combo_03)
+  [COMBO_03] = COMBO(combo_03, LSFT(KC_E))
 };
 void process_combo_event(uint8_t combo_index, bool pressed) {
+  dprintf("process_combo_event combo_index=%u,pressed=%u\n", combo_index, pressed);
   switch(combo_index) {
     case COMBO_02:
       if (pressed) {
-        print("LCtl+ESC\n");
         tap_code16(LSFT(KC_D));
       }
       break;
     case COMBO_03:
       if (pressed) {
-        print("LSft+ESC\n");
         tap_code16(LSFT(KC_E));
       }
       break;
@@ -56,6 +55,10 @@ void keyboard_post_init_user(void) {
   //debug_matrix=true;
   //debug_keyboard=true;
   //debug_mouse=true;
+}
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  dprintf("process_record_user keycode=%u, record->event.pressed=%u\n", keycode, record->event.pressed);
+  return true;
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
