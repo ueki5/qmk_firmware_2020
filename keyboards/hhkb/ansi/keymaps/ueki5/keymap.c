@@ -35,18 +35,23 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_03] = COMBO(combo_03, LSFT(KC_E))
 };
 void process_combo_event(uint8_t combo_index, bool pressed) {
-  dprintf("process_combo_event combo_index=%u,pressed=%u\n", combo_index, pressed);
+// dprintf("process_combo_event combo_index=%u,pressed=%u\n", combo_index, pressed);
   switch(combo_index) {
+    // case COMBO_01:
+    //   if (pressed) {
+    //     tap_code16(LSFT(KC_C));
+    //   }
+    //   break;
     case COMBO_02:
       if (pressed) {
         tap_code16(LSFT(KC_D));
       }
       break;
-    case COMBO_03:
-      if (pressed) {
-        tap_code16(LSFT(KC_E));
-      }
-      break;
+    // case COMBO_03:
+    //   if (pressed) {
+    //     tap_code16(LSFT(KC_E));
+    //   }
+    //   break;
   }
 }
 void keyboard_post_init_user(void) {
@@ -57,7 +62,7 @@ void keyboard_post_init_user(void) {
   //debug_mouse=true;
 }
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  dprintf("process_record_user keycode=%u, record->event.pressed=%u\n", keycode, record->event.pressed);
+// dprintf("process_record_user keycode=%u, record->event.pressed=%u\n", keycode, record->event.pressed);
   return true;
 }
 

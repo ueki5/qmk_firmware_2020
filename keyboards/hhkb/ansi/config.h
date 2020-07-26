@@ -38,7 +38,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // key combo
 #define COMBO_COUNT 3
-#define COMBO_TERM  200
+#define COMBO_TERM  1000
 
 /* number of backlight levels */
 #define BACKLIGHT_LEVELS 3

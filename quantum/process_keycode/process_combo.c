@@ -40,7 +40,7 @@ static uint16_t key_buffer[MAX_COMBO_LENGTH];
 #endif
 
 static inline void send_combo(uint16_t action, bool pressed) {
-    dprintf("send_combo action=%u,pressed=%u\n", action, pressed);
+    // dprintf("send_combo action=%u,pressed=%u\n", action, pressed);
     if (action) {
         if (pressed) {
             register_code16(action);
@@ -83,7 +83,7 @@ static inline void dump_key_buffer(bool emit) {
     } while (0)
 
 static bool process_single_combo(combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    dprintf("process_single_combo combo->keycode=%u, combo->state=%u, keycode=%u, record->event.pressed=%u, is_active=%u\n", combo->keycode, combo->state, keycode, record->event.pressed, is_active);
+// dprintf("process_single_combo combo->keycode=%u, combo->state=%u, keycode=%u, record->event.pressed=%u, is_active=%u\n", combo->keycode, combo->state, keycode, record->event.pressed, is_active);
     uint8_t count = 0;
     uint8_t index = -1;
     /* Find index of keycode and number of combo keys */
@@ -99,10 +99,13 @@ static bool process_single_combo(combo_t *combo, uint16_t keycode, keyrecord_t *
     bool is_combo_active = is_active;
 
     if (record->event.pressed) {
+dprintf("psc1 %u,%u\n", index, combo->state);
         KEY_STATE_DOWN(index);
+dprintf("psc2 %u,%u\n", index, combo->state);
 
         if (is_combo_active) {
             if (ALL_COMBO_KEYS_ARE_DOWN) { /* Combo was pressed */
+dprintf("psc3 %u,%u\n", keycode, record->event.pressed);
                 send_combo(combo->keycode, true);
                 drop_buffer = true;
             }
@@ -124,7 +127,7 @@ static bool process_single_combo(combo_t *combo, uint16_t keycode, keyrecord_t *
 #define NO_COMBO_KEYS_ARE_DOWN (0 == combo->state)
 
 bool process_combo(uint16_t keycode, keyrecord_t *record) {
-    dprintf("process_combo keycode=%u,record->event.pressed=%u\n", keycode, record->event.pressed);
+// dprintf("process_combo keycode=%u,record->event.pressed=%u\n", keycode, record->event.pressed);
     bool is_combo_key          = false;
     drop_buffer                = false;
     bool no_combo_keys_pressed = true;
@@ -158,24 +161,29 @@ bool process_combo(uint16_t keycode, keyrecord_t *record) {
     }
 
     if (drop_buffer) {
+dprintf("pc1 %u,%u\n", keycode, record->event.pressed);
         /* buffer is only dropped when we complete a combo, so we refresh the timer
          * here */
         timer = timer_read();
         dump_key_buffer(false);
     } else if (!is_combo_key) {
+dprintf("pc2 %u,%u\n", keycode, record->event.pressed);
         /* if no combos claim the key we need to emit the keybuffer */
         dump_key_buffer(true);
 
         // reset state if there are no combo keys pressed at all
         if (no_combo_keys_pressed) {
+dprintf("pc3 %u,%u\n", keycode, record->event.pressed);
             timer     = 0;
             is_active = true;
         }
     } else if (record->event.pressed && is_active) {
+dprintf("pc4 %u,%u\n", keycode, record->event.pressed);
         /* otherwise the key is consumed and placed in the buffer */
         timer = timer_read();
 
         if (buffer_size < MAX_COMBO_LENGTH) {
+dprintf("pc5 %u,%u\n", keycode, record->event.pressed);
 #ifdef COMBO_ALLOW_ACTION_KEYS
             key_buffer[buffer_size++] = *record;
 #else
