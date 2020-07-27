@@ -99,13 +99,11 @@ static bool process_single_combo(combo_t *combo, uint16_t keycode, keyrecord_t *
     bool is_combo_active = is_active;
 
     if (record->event.pressed) {
-dprintf("psc1 %u,%u\n", index, combo->state);
         KEY_STATE_DOWN(index);
-dprintf("psc2 %u,%u\n", index, combo->state);
 
         if (is_combo_active) {
             if (ALL_COMBO_KEYS_ARE_DOWN) { /* Combo was pressed */
-dprintf("psc3 %u,%u\n", keycode, record->event.pressed);
+dprintf("psc1 %u,%u\n", keycode, record->event.pressed);
                 send_combo(combo->keycode, true);
                 drop_buffer = true;
             }
