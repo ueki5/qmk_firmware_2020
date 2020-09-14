@@ -37,6 +37,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PERMISSIVE_HOLD
 #define RETRO_TAPPING
 
+// key combo
+#define COMBO_COUNT 14
+#define COMBO_TERM  1000
+#define EXTRA_EXTRA_LONG_COMBOS
+
 /* MCU Port name definitions */
 #define PA 0
 #define PB 1
