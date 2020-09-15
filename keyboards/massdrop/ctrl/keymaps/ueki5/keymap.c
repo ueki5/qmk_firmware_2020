@@ -42,8 +42,8 @@ enum combos {
 };
 
 // @   ^&*()_+|~
-const uint16_t PROGMEM combo_01[] = {KC_LSFT, KC_6   , COMBO_END};
-const uint16_t PROGMEM combo_02[] = {KC_LSFT, KC_2   , COMBO_END};
+const uint16_t PROGMEM combo_01[] = {KC_RSFT, KC_2   , COMBO_END};
+const uint16_t PROGMEM combo_02[] = {KC_LSFT, KC_6   , COMBO_END};
 const uint16_t PROGMEM combo_03[] = {KC_LSFT, KC_7   , COMBO_END};
 const uint16_t PROGMEM combo_04[] = {KC_LSFT, KC_8   , COMBO_END};
 const uint16_t PROGMEM combo_05[] = {KC_LSFT, KC_9   , COMBO_END};
@@ -60,8 +60,8 @@ const uint16_t PROGMEM combo_13[] = {KC_LSFT, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM combo_14[] = {KC_LSFT, JP_QUOT, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
   // @   ^&*()_+|~
-  [COMBO_01] = COMBO(combo_01, JP_CIRC),
-  [COMBO_02] = COMBO(combo_02, JP_AT),
+  [COMBO_01] = COMBO(combo_01, JP_AT),
+  [COMBO_02] = COMBO(combo_02, JP_CIRC),
   [COMBO_03] = COMBO(combo_03, JP_AMPR),
   [COMBO_04] = COMBO(combo_04, JP_ASTR),
   [COMBO_05] = COMBO(combo_05, JP_LPRN),
@@ -117,9 +117,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,            _______, _______, _______, \
         _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, _______,   _______, _______, _______, \
-        _______, _______, _______, _______, _______, _______,   U_TOP, KC_HOME,   KC_UP,  KC_END,   U_BTM,   JP_AT, JP_PIPE, _______,   _______, _______, _______, \
+        _______, _______, _______, _______, _______, _______,   U_TOP, KC_HOME,   KC_UP,  KC_END,   U_BTM, JP_UNDS, JP_PIPE, _______,   _______, _______, _______, \
         _______,   LCTLA,   LCTLS, KC_LCTL, KC_LSFT, _______, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, JP_BSLS, _______, \
-        _______,   LCTLZ,   LCTLX,   LCTLC,   LCTLV, _______, KC_ESC,  KC_PGDN, KC_PSCR, KC_PGUP, JP_UNDS, _______,                              _______, \
+        _______,   LCTLZ,   LCTLX,   LCTLC,   LCTLV, _______, KC_ESC,  KC_PGDN, KC_PSCR, KC_PGUP, _______, _______,                              _______, \
         _______, _______, _______,                    KC_ENT,                            _______, _______, _______, _______,            _______, _______, _______ \
     ),
     [2] = LAYOUT(

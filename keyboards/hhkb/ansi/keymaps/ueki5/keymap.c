@@ -38,7 +38,7 @@ enum combos {
   COMBO_14
 };
 // @   ^&*()_+|~
-const uint16_t PROGMEM combo_01[] = {KC_LSFT, KC_2   , COMBO_END};
+const uint16_t PROGMEM combo_01[] = {KC_RSFT, KC_2   , COMBO_END};
 const uint16_t PROGMEM combo_02[] = {KC_LSFT, KC_6   , COMBO_END};
 const uint16_t PROGMEM combo_03[] = {KC_LSFT, KC_7   , COMBO_END};
 const uint16_t PROGMEM combo_04[] = {KC_LSFT, KC_8   , COMBO_END};
@@ -126,9 +126,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [HHKB1] = LAYOUT(
         KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,  KC_F12,  KC_INS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, U_TOP,   KC_HOME, KC_UP,   KC_END,  U_BTM,     JP_AT, JP_PIPE,  KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, U_TOP,   KC_HOME, KC_UP,   KC_END,  U_BTM,   JP_UNDS, JP_PIPE,  KC_TRNS,
         KC_TRNS, LCTLA,   LCTLS,   KC_LCTL, KC_LSFT, KC_TRNS, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  JP_BSLS, KC_TRNS,
-        KC_TRNS, LCTLZ  , LCTLX,   LCTLC,   LCTLV,   KC_TRNS, KC_ESC,  KC_PGDN, KC_PSCR, KC_PGUP, JP_UNDS, KC_TRNS, KC_TRNS,
+        KC_TRNS, LCTLZ  , LCTLX,   LCTLC,   LCTLV,   KC_TRNS, KC_ESC,  KC_PGDN, KC_PSCR, KC_PGUP, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_ENT , KC_TRNS, KC_TRNS),
 
     /* Layer HHKB2: Raise */
