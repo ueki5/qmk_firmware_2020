@@ -42,8 +42,8 @@ enum combos {
 };
 
 // @   ^&*()_+|~
-const uint16_t PROGMEM combo_01[] = {KC_LSFT, KC_2   , COMBO_END};
-const uint16_t PROGMEM combo_02[] = {KC_LSFT, KC_6   , COMBO_END};
+const uint16_t PROGMEM combo_01[] = {KC_LSFT, KC_6   , COMBO_END};
+const uint16_t PROGMEM combo_02[] = {KC_LSFT, KC_2   , COMBO_END};
 const uint16_t PROGMEM combo_03[] = {KC_LSFT, KC_7   , COMBO_END};
 const uint16_t PROGMEM combo_04[] = {KC_LSFT, KC_8   , COMBO_END};
 const uint16_t PROGMEM combo_05[] = {KC_LSFT, KC_9   , COMBO_END};
@@ -60,8 +60,8 @@ const uint16_t PROGMEM combo_13[] = {KC_LSFT, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM combo_14[] = {KC_LSFT, JP_QUOT, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
   // @   ^&*()_+|~
-  [COMBO_01] = COMBO(combo_01, JP_AT),
-  [COMBO_02] = COMBO(combo_02, JP_CIRC),
+  [COMBO_01] = COMBO(combo_01, JP_CIRC),
+  [COMBO_02] = COMBO(combo_02, JP_AT),
   [COMBO_03] = COMBO(combo_03, JP_AMPR),
   [COMBO_04] = COMBO(combo_04, JP_ASTR),
   [COMBO_05] = COMBO(combo_05, JP_LPRN),
@@ -85,11 +85,11 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
     //     tap_code16(LSFT(KC_C));
     //   }
     //   break;
-    case COMBO_02:
-      if (pressed) {
-        tap_code16(LSFT(KC_D));
-      }
-      break;
+    // case COMBO_02:
+    //   if (pressed) {
+    //     tap_code16(LSFT(KC_D));
+    //   }
+    //   break;
     // case COMBO_03:
     //   if (pressed) {
     //     tap_code16(LSFT(KC_E));
