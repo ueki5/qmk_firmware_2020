@@ -35,3 +35,13 @@
 
 /* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
 //#define MIDI_TONE_KEYCODE_OCTAVES 2
+
+// tap and hold
+#define TAPPING_TERM    200
+#define PERMISSIVE_HOLD
+#define RETRO_TAPPING
+
+// key combo
+#define COMBO_COUNT 14
+#define COMBO_TERM  1000
+#define EXTRA_EXTRA_LONG_COMBOS

@@ -16,6 +16,99 @@
 
 #include QMK_KEYBOARD_H
 #include "muse.h"
+#include "keymap_jp.h"
+
+// Original Key define
+#define LCTLA LCTL(KC_A)
+#define LCTLC LCTL(KC_C)
+#define LCTLS LCTL(KC_S)
+#define LCTLV LCTL(KC_V)
+#define LCTLX LCTL(KC_X)
+#define LCTLZ LCTL(KC_Z)
+#define U_TOP LCTL(KC_HOME)
+#define U_BTM LCTL(KC_END)
+
+// key Combo definition
+enum combos {
+  COMBO_01,
+  COMBO_02,
+  COMBO_03,
+  COMBO_04,
+  COMBO_05,
+  COMBO_06,
+  COMBO_07,
+  COMBO_08,
+  COMBO_09,
+  COMBO_10,
+  COMBO_11,
+  COMBO_12,
+  COMBO_13,
+  COMBO_14
+};
+
+// @   ^&*()_+|~
+const uint16_t PROGMEM combo_01[] = {KC_RSFT, KC_2   , COMBO_END};
+const uint16_t PROGMEM combo_02[] = {KC_LSFT, KC_6   , COMBO_END};
+const uint16_t PROGMEM combo_03[] = {KC_LSFT, KC_7   , COMBO_END};
+const uint16_t PROGMEM combo_04[] = {KC_LSFT, KC_8   , COMBO_END};
+const uint16_t PROGMEM combo_05[] = {KC_LSFT, KC_9   , COMBO_END};
+const uint16_t PROGMEM combo_06[] = {KC_LSFT, KC_0   , COMBO_END};
+const uint16_t PROGMEM combo_07[] = {KC_LSFT, KC_MINS, COMBO_END};
+const uint16_t PROGMEM combo_08[] = {KC_LSFT, JP_EQL , COMBO_END};
+const uint16_t PROGMEM combo_09[] = {KC_LSFT, KC_JYEN, COMBO_END};
+const uint16_t PROGMEM combo_10[] = {KC_LSFT, JP_GRV , COMBO_END};
+// {}
+const uint16_t PROGMEM combo_11[] = {KC_LSFT, JP_LBRC, COMBO_END};
+const uint16_t PROGMEM combo_12[] = {KC_LSFT, JP_RBRC, COMBO_END};
+// :"
+const uint16_t PROGMEM combo_13[] = {KC_LSFT, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM combo_14[] = {KC_LSFT, JP_QUOT, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+  // @   ^&*()_+|~
+  [COMBO_01] = COMBO(combo_01, JP_AT),
+  [COMBO_02] = COMBO(combo_02, JP_CIRC),
+  [COMBO_03] = COMBO(combo_03, JP_AMPR),
+  [COMBO_04] = COMBO(combo_04, JP_ASTR),
+  [COMBO_05] = COMBO(combo_05, JP_LPRN),
+  [COMBO_06] = COMBO(combo_06, JP_RPRN),
+  [COMBO_07] = COMBO(combo_07, JP_UNDS),
+  [COMBO_08] = COMBO(combo_08, JP_PLUS),
+  [COMBO_09] = COMBO(combo_09, JP_PIPE),
+  [COMBO_10] = COMBO(combo_10, JP_TILD),
+  // {}
+  [COMBO_11] = COMBO(combo_11, JP_LCBR),
+  [COMBO_12] = COMBO(combo_12, JP_RCBR),
+  // :"
+  [COMBO_13] = COMBO(combo_13, JP_COLN),
+  [COMBO_14] = COMBO(combo_14, JP_DQUO)
+};
+void process_combo_event(uint8_t combo_index, bool pressed) {
+// dprintf("process_combo_event combo_index=%u,pressed=%u\n", combo_index, pressed);
+  switch(combo_index) {
+    // case COMBO_01:
+    //   if (pressed) {
+    //     tap_code16(LSFT(KC_C));
+    //   }
+    //   break;
+    // case COMBO_02:
+    //   if (pressed) {
+    //     tap_code16(LSFT(KC_D));
+    //   }
+    //   break;
+    // case COMBO_03:
+    //   if (pressed) {
+    //     tap_code16(LSFT(KC_E));
+    //   }
+    //   break;
+  }
+}
+void keyboard_post_init_user(void) {
+  // Customise these values to desired behaviour
+  debug_enable=true;
+  //debug_matrix=true;
+  //debug_keyboard=true;
+  //debug_mouse=true;
+}
 
 enum preonic_layers {
   _QWERTY,
@@ -51,10 +144,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,  \
-  KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
+  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_JYEN, \
+  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,  \
+  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT, \
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,  \
   BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
 ),
 
@@ -97,7 +190,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_DEL,  \
   KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH, \
   KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT,  \
-  BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT  \
+  BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LT(LOWER, JP_MHEN), KC_SPC, KC_SPC, LT(RAISE, JP_HENK), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT  \
 ),
 
 /* Lower
@@ -114,11 +207,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid( \
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC, \
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,  \
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, \
-  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,S(KC_NUHS),S(KC_NUBS),KC_HOME, KC_END, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY \
+  KC_F11,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F12, \
+  _______, _______, _______, _______, _______, _______, U_TOP,   KC_HOME, KC_UP,   KC_END,  U_BTM,   _______,  \
+  _______, LCTLA,   LCTLS,   KC_LCTL, KC_LSFT, _______, KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT, KC_DEL,  _______, \
+  _______, LCTLZ,   LCTLX,   LCTLC,   LCTLV,   _______, KC_ESC,  KC_PGDN, KC_PSCR, KC_PGUP, _______, _______, \
+  _______, _______, _______, _______, _______, KC_ENT,  KC_ENT,  _______, _______, _______, _______, _______ \
 ),
 
 /* Raise
@@ -135,11 +228,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,  \
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, \
-  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY  \
+  KC_F11,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F12, \
+  _______, KC_LCBR, KC_RCBR, KC_MINS, KC_UNDS, KC_GRV,  _______, _______, _______, _______, _______, _______,  \
+  _______, KC_LBRC, KC_RBRC, KC_EQL , KC_PLUS, JP_TILD, _______, KC_RSFT, KC_RCTL, _______, _______, _______, \
+  _______, KC_TRNS, KC_TRNS, KC_QUOT, KC_DQUO, KC_TRNS, _______, _______, _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______, KC_ENT,  KC_ENT,  _______, _______, _______, _______, _______ \
 ),
 
 /* Adjust (Lower + Raise)
