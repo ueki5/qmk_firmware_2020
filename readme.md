@@ -43,7 +43,6 @@ git-bash
 make massdrop/ctrl:ueki5
 mdloader.exe --first --download massdrop_ctrl_ueki5.bin --restart
 Fn+B
-!!
 
 [hhkb]
 git-bash
@@ -54,4 +53,3 @@ press hardware switch
 git-bash
 make preonic/rev3:ueki5:dfu-util
 press reset switch
-??
