@@ -53,3 +53,4 @@ press hardware switch
 git-bash
 make preonic/rev3:ueki5:dfu-util
 press reset switch
+??
