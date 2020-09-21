@@ -43,6 +43,7 @@ git-bash
 make massdrop/ctrl:ueki5
 mdloader.exe --first --download massdrop_ctrl_ueki5.bin --restart
 Fn+B
+!!
 
 [hhkb]
 git-bash
