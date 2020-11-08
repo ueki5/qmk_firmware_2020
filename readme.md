@@ -36,20 +36,18 @@ QMK is developed and maintained by Jack Humbert of OLKB with contributions from 
 
 [qmk.fm](https://qmk.fm) is the official website of QMK, where you can find links to this page, the documentation, and the keyboards supported by QMK.
 
-## uekigo!
+## how to build & install
+First, type bash(wsl) or git-bash(git-sdk-64) on your terminal.
 
 [massdrop cntrl]
-git-bash
 make massdrop/ctrl:ueki5
 mdloader.exe --first --download massdrop_ctrl_ueki5.bin --restart
-Fn+B
+Fn+B(long press)
 
 [hhkb]
-git-bash
 make hhkb/ansi:ueki5:dfu
 press hardware switch
 
 [olkb preonic]
-git-bash
 make preonic/rev3:ueki5:dfu-util
 press reset switch
