@@ -41,7 +41,7 @@ enum combos {
   COMBO_14
 };
 // @   ^&*()_+|~
-const uint16_t PROGMEM combo_01[] = {KC_RSFT, KC_2   , COMBO_END};
+const uint16_t PROGMEM combo_01[] = {KC_LSFT, KC_2   , COMBO_END};
 const uint16_t PROGMEM combo_02[] = {KC_LSFT, KC_6   , COMBO_END};
 const uint16_t PROGMEM combo_03[] = {KC_LSFT, KC_7   , COMBO_END};
 const uint16_t PROGMEM combo_04[] = {KC_LSFT, KC_8   , COMBO_END};
