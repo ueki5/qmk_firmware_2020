@@ -51,3 +51,6 @@ press hardware switch
 [olkb preonic]
 make preonic/rev3:ueki5:dfu-util
 press reset switch
+
+[angel70]
+make angel70/rev1:ueki5-usjp
