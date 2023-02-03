@@ -40,17 +40,19 @@ QMK is developed and maintained by Jack Humbert of OLKB with contributions from 
 First, type bash(wsl) or git-bash(git-sdk-64) on your terminal.
 
 [massdrop cntrl]
-make massdrop/ctrl:ueki5
-mdloader.exe --first --download massdrop_ctrl_ueki5.bin --restart
+make massdrop/ctrl:ueki5-usjp
+mdloader.exe --first --download massdrop_ctrl_ueki5-usjp.bin --restart
 Fn+B(long press)
 
 [hhkb]
-make hhkb/ansi:ueki5:dfu
+make hhkb/ansi:ueki5-usjp:dfu
 press hardware switch
 
 [olkb preonic]
-make preonic/rev3:ueki5:dfu-util
+make preonic/rev3:ueki5-usjp:dfu-util
 press reset switch
 
 [angel70]
 make angel70/rev1:ueki5-usjp
+use qmk_toolbox with Microcontroller=atmega32u4,Auto-Flash=checked
+press dip switch
