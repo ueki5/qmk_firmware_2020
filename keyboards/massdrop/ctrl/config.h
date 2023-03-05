@@ -39,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // key combo
 #define COMBO_COUNT 14
-#define COMBO_TERM  1000
+// #define COMBO_TERM  1000
 #define EXTRA_EXTRA_LONG_COMBOS
 
 /* MCU Port name definitions */
@@ -133,5 +133,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_MATRIX_KEYPRESSES
 #define RGB_MATRIX_LED_PROCESS_LIMIT 15
 #define RGB_MATRIX_LED_FLUSH_LIMIT 10
+
+#define PREVENT_STUCK_MODIFIERS
 
 #include "config_led.h"

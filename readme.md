@@ -42,7 +42,8 @@ First, type bash(wsl) or git-bash(git-sdk-64) on your terminal.
 [massdrop cntrl]
 make massdrop/ctrl:ueki5-usjp
 mdloader.exe --first --download massdrop_ctrl_ueki5-usjp.bin --restart
-Fn+B(long press)
+Fn+B(long press & keyup)
+If timeout occurs, connect the USB cable directly.
 
 [hhkb]
 make hhkb/ansi:ueki5-usjp:dfu
