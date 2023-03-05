@@ -5,9 +5,9 @@ enum ctrl_layouts {
     _JP = 0, //JP Layout
     _JL,     //JP Lower
     _JR,     //JP Raise
+    _GN,     //General
     _US,     //US Layout
     _UL,     //JP Lower
-    _GN,     //General
 };
 
 enum ctrl_keycodes {
@@ -87,35 +87,35 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_14] = COMBO(combo_14, JP_DQUO)
 };
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    /* Disable combo on layer 4 or 5 */
-    if (layer_state_is(4) || layer_state_is(5)) {
+    /* Disable combo on US layout layer */
+    if (layer_state_is(_US) || layer_state_is(_UL)) {
         return false;
     }
     return true;
 }
 void process_combo_event(uint8_t combo_index, bool pressed) {
-// dprintf("process_combo_event combo_index=%u,pressed=%u\n", combo_index, pressed);
-  switch(combo_index) {
-    // case COMBO_01:
-    //   if (pressed) {
-    //     tap_code16(LSFT(KC_C));
-    //   }
-    //   break;
-    // case COMBO_02:
-    //   if (pressed) {
-    //     tap_code16(LSFT(KC_D));
-    //   }
-    //   break;
-    // case COMBO_03:
-    //   if (pressed) {
-    //     tap_code16(LSFT(KC_E));
-    //   }
-    //   break;
-  }
+//   dprintf("process_combo_event combo_index=%u,pressed=%u\n", combo_index, pressed);
+//   switch(combo_index) {
+//     case COMBO_01:
+//       if (pressed) {
+//         tap_code16(LSFT(KC_C));
+//       }
+//       break;
+//     case COMBO_02:
+//       if (pressed) {
+//         tap_code16(LSFT(KC_D));
+//       }
+//       break;
+//     case COMBO_03:
+//       if (pressed) {
+//         tap_code16(LSFT(KC_E));
+//       }
+//       break;
+//   }
 }
 void keyboard_post_init_user(void) {
   // Customise these values to desired behaviour
-  debug_enable=true;
+  //debug_enable=true;
   //debug_matrix=true;
   //debug_keyboard=true;
   //debug_mouse=true;
@@ -152,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,   KC_DEL,  KC_END,  KC_PGDN, \
         KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_ENT, \
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,                              KC_UP, \
-        MO(3),   KC_LALT, LT(_UL, JP_MHEN),   KC_SPC,                    LT(_UL, JP_HENK),   KC_LALT, KC_LGUI, KC_LCTL,            KC_LEFT, KC_DOWN, KC_RGHT \
+        MO(_GN),   KC_LALT, LT(_UL, JP_MHEN),   KC_SPC,                    LT(_UL, JP_HENK),   KC_LALT, KC_LGUI, KC_LCTL,            KC_LEFT, KC_DOWN, KC_RGHT \
     ),
     [_UL] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,            _______, _______, _______, \
@@ -162,7 +162,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,   LCTLZ,   LCTLX,   LCTLC,   LCTLV, _______, KC_ESC,  KC_PGDN, KC_PSCR, KC_PGUP, _______, _______,                              _______, \
         _______, _______, _______,                    KC_ENT,                            _______, _______, _______, _______,            _______, _______, _______ \
     ),
-    [3] = LAYOUT(
+    [_GN] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,            KC_MUTE, _______, _______, \
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,   KC_MPLY, KC_MSTP, KC_VOLU, \
         _______, RGB_SPD, RGB_VAI, RGB_SPI, RGB_HUI, RGB_SAI, _______,U_T_AUTO,U_T_AGCR, _______, _______, _______, _______, _______,   KC_MPRV, KC_MNXT, KC_VOLD, \

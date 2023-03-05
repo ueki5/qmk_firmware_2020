@@ -40,10 +40,11 @@ QMK is developed and maintained by Jack Humbert of OLKB with contributions from 
 First, type bash(wsl) or git-bash(git-sdk-64) on your terminal.
 
 [massdrop cntrl]
-make massdrop/ctrl:ueki5-usjp
-mdloader.exe --first --download massdrop_ctrl_ueki5-usjp.bin --restart
+make massdrop/ctrl:ueki5-dual
+./mdloader.exe --first --download massdrop_ctrl_ueki5-dual.bin --restart
 Fn+B(long press & keyup)
-If timeout occurs, connect the USB cable directly.
+*1)If Fn+B doesn't work, press the switch on the back of the keyboard
+*2)If timeout occurs, connect the USB cable directly.
 
 [hhkb]
 make hhkb/ansi:ueki5-usjp:dfu
