@@ -159,7 +159,7 @@ void sw_to_pc(uint8_t keycode,  uint8_t layer) {
     } else {
         combo_disable();
     };
-    layer_on(layer);
+    tap_code(DF(layer));
     tap_code(KC_HOME);
     wait_ms(200);
     tap_code(KC_HOME);
