@@ -18,6 +18,10 @@ enum ctrl_keycodes {
     DBG_KBD,               //DEBUG Toggle Keyboard Prints
     DBG_MOU,               //DEBUG Toggle Mouse Prints
     MD_BOOT,               //Restart into bootloader after hold timeout
+    SW_PC1,                //Switch to PC1
+    SW_PC2,                //Switch to PC2
+    SW_PC3,                //Switch to PC3
+    SW_PC4,                //Switch to PC4
 };
 
 keymap_config_t keymap_config;
@@ -131,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,            KC_MUTE, _______, _______, \
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,   KC_MPLY, KC_MSTP, KC_VOLU, \
         _______, RGB_SPD, RGB_VAI, RGB_SPI, RGB_HUI, RGB_SAI, _______,U_T_AUTO,U_T_AGCR, _______, _______, _______, _______, _______,   KC_MPRV, KC_MNXT, KC_VOLD, \
-        _______, RGB_RMOD,RGB_VAD, RGB_MOD, RGB_HUD, RGB_SAD, _______, DF(_JP), DF(_JP), DF(_US), DF(_US), _______, _______, \
+        _______, RGB_RMOD,RGB_VAD, RGB_MOD, RGB_HUD, RGB_SAD, _______,  SW_PC1,  SW_PC2,  SW_PC3,  SW_PC4, _______, _______, \
         _______, RGB_TOG, _______, _______, _______, MD_BOOT, NK_TOGG, _______, _______, _______, _______, _______,                              _______, \
         _______, _______, _______,                   JP_ZKHK,                            _______, _______, _______, _______,            _______, _______, _______ \
     ),
@@ -149,10 +153,23 @@ void matrix_scan_user(void) {
 #define MODS_CTRL   (get_mods() & MOD_MASK_CTRL)
 #define MODS_ALT    (get_mods() & MOD_MASK_ALT)
 
+void sw_to_pc(uint8_t keycode,  uint8_t layer) {
+    if (layer == _JP) {
+        combo_enable();
+    } else {
+        combo_disable();
+    };
+    tap_code(DF(layer));
+    tap_code(KC_HOME);
+    wait_ms(200);
+    tap_code(KC_HOME);
+    wait_ms(200);
+    tap_code(keycode);
+};
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint32_t key_timer;
 
-    dprintf("process_record_user keycode=%u, record->event.pressed=%u\n", keycode, record->event.pressed);
+    // dprintf("process_record_user keycode=%u, record->event.pressed=%u\n", keycode, record->event.pressed);
     switch (keycode) {
         case U_T_AUTO:
             if (record->event.pressed && MODS_SHIFT && MODS_CTRL) {
@@ -219,6 +236,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
               }
             }
             return false;
+        case SW_PC1:
+            sw_to_pc(KC_1, _JP);
+            return false;
+        case SW_PC2:
+            sw_to_pc(KC_2, _JP);
+            return false;
+        case SW_PC3:
+            sw_to_pc(KC_3, _US);
+            return false;
+        case SW_PC4:
+            sw_to_pc(KC_4, _US);
+            return false;
         default:
             return true; //Process all other keycodes normally
     }
@@ -227,15 +256,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Combo related functions
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     /* Disable combo on US layout layer */
+    // 新しいバージョンの機能らしい（後で最新化）
     if (layer_state_is(_US) || layer_state_is(_UL)) {
         dprintf("combo_should_trigger=false\n");
+        // dprintf("combo_should_trigger=false\n");
         return false;
     }
     dprintf("combo_should_trigger=true\n");
+    // dprintf("combo_should_trigger=true\n");
     return true;
 }
 void process_combo_event(uint8_t combo_index, bool pressed) {
-    // dprintf("process_combo_event combo_index=%u,pressed=%u\n", combo_index, pressed);
+    // 新しいバージョンの機能らしい（後で最新化）
+    dprintf("process_combo_event combo_index=%u,pressed=%u\n", combo_index, pressed);
 //   switch(combo_index) {
 //     case COMBO_01:
 //       if (pressed) {
