@@ -126,8 +126,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_UL] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,            _______, _______, _______, \
         _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, _______,   _______, _______, _______, \
-        _______, _______, _______, _______, _______, _______,   U_TOP, KC_HOME,   KC_UP,  KC_END,   U_BTM, JP_UNDS, JP_PIPE, _______,   _______, _______, _______, \
-        _______,   LCTLA,   LCTLS, KC_LCTL, KC_LSFT, DF(_JP), KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, JP_BSLS, _______, \
+        _______, _______, _______, _______, _______, _______,   U_TOP, KC_HOME,   KC_UP,  KC_END,   U_BTM, _______, _______, _______,   _______, _______, _______, \
+        _______,   LCTLA,   LCTLS, KC_LCTL, KC_LSFT, DF(_JP), KC_BSPC, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, _______, _______, \
         _______,   LCTLZ,   LCTLX,   LCTLC,   LCTLV, _______, KC_ESC,  KC_PGDN, KC_PSCR, KC_PGUP, _______, _______,                              _______, \
         _______, _______, _______,                    KC_ENT,                            _______, _______, _______, _______,            _______, _______, _______ \
     ),
@@ -155,8 +155,10 @@ void matrix_scan_user(void) {
 
 void sw_to_pc(uint8_t keycode,  uint8_t layer) {
     if (layer == _JP) {
+        dprintf("sw_to_pc combo_enable! keycode=%u, layer=%u\n", keycode, layer);
         combo_enable();
     } else {
+        dprintf("sw_to_pc combo_disable! keycode=%u, layer=%u\n", keycode, layer);
         combo_disable();
     };
     tap_code(DF(layer));
